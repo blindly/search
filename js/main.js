@@ -59,7 +59,7 @@ function main(){
         autoLoadNext:{
             name:"Auto Load Next",
             type:"checkbox",
-            value:false
+            value:true
         },
         displayCount:{
             name:"Display Count",
@@ -114,10 +114,11 @@ function main(){
     var resultsView=ResultsView()
     if(option.get("showPluginSite")){
         var pluginSite=PluginSite([
-            {name:"Bing",url:"http://www.bing.com/search?q=%s",target:"preview"},
             {name:"Google",url:"https://www.google.com/#q=%s",target:"newTab"},
+            {name:"Bing",url:"http://www.bing.com/search?q=%s",target:"preview"},
             {name:"DuckDuckGo",url:"https://duckduckgo.com/?q=%s",target:"newTab"},
-	    {name:"StackOverflow",url:"http://stackoverflow.com/search?q=%s",target:"newTab"},
+            {name:"StackOverflow",url:"http://stackoverflow.com/search?q=%s",target:"newTab"},
+            {name:"Youtube",url:"https://www.youtube.com/results?search_query=%s",target:"newTab"},
         ]);
         resultsView.append(pluginSite);
     }

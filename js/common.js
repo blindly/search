@@ -7,7 +7,7 @@ function Data(){
         Web:{
             Query:[],
             Options:["EnableHighlighting"],
-            Adult:["Moderate"],//Off, Moderate, Strict 
+            Adult:["Strict"],//Off, Moderate, Strict
             $top:10,
             $skip:0,
             Market:["en-US"],//en-US, fr-FR, zh-CN, zh-HK, zh-TW
@@ -24,7 +24,7 @@ function Data(){
         },
         Image:{
             Query:[],
-            Adult:["Moderate"],//Off, Moderate, Strict 
+            Adult:["Strict"],//Off, Moderate, Strict
             $top:10,
             $skip:0,
             Market:["en-US"],//en-US, fr-FR, zh-CN, zh-HK, zh-TW
@@ -40,7 +40,7 @@ function Data(){
         },
         Video:{
             Query:[],
-            Adult:["Moderate"],//Off, Moderate, Strict 
+            Adult:["Strict"],//Off, Moderate, Strict
             $top:10,
             $skip:0,
             Market:["zh-CN"],//en-US, fr-FR, zh-CN, zh-HK, zh-TW
@@ -65,7 +65,7 @@ function Data(){
         callback:null,
         scriptNode:null,
     };
-    
+
     for(var i in this.AutoFill.option)this.AutoFill.requestURL+=(i+"="+this.AutoFill.option[i]+"&");
 
     this.getResult=function(sourceTypes,setting,callback){
@@ -80,7 +80,7 @@ function Data(){
                     }
                 }
             }
-            
+
             requestURL=baseURL;
             requestURL+=sourceTypes+"?";
             for(var i in option){
@@ -114,7 +114,7 @@ function Data(){
             OmpPWnJkN3gxUlJtVG1UcUpMUUtISm0yR1h0UzFzNVFQeGpsZUozTzZsOXc9
             ------------------------------------------------------------
             */
-            xmlhttp.open("post",requestURL,true); 
+            xmlhttp.open("post",requestURL,true);
             xmlhttp.setRequestHeader('Authorization', 'Basic OmpPWnJkN3gxUlJtVG1UcUpMUUtISm0yR1h0UzFzNVFQeGpsZUozTzZsOXc9');
             xmlhttp.send(null);
         }
@@ -146,39 +146,39 @@ function UrlFilter(list){
 //--------------------------------------------- Json
 function Json(){
     this.stringify=function(obj){
-        switch(typeof obj){   
-            case 'string':   
-                return '"' + obj.replace(/(["\\])/g, '\\$1') + '"';   
-            case 'array':   
-                return '[' + obj.map(this.stringify).join(',') + ']';   
-            case 'object':   
-                 if(obj instanceof Array||obj.constructor.toString().match(/function\sArray\(/)){   
-                    var strArr = [];   
-                    var len = obj.length;   
-                    for(var i=0; i<len; i++){   
-                        strArr.push(this.stringify(obj[i]));   
-                    }   
-                    return '[' + strArr.join(',') + ']';   
+        switch(typeof obj){
+            case 'string':
+                return '"' + obj.replace(/(["\\])/g, '\\$1') + '"';
+            case 'array':
+                return '[' + obj.map(this.stringify).join(',') + ']';
+            case 'object':
+                 if(obj instanceof Array||obj.constructor.toString().match(/function\sArray\(/)){
+                    var strArr = [];
+                    var len = obj.length;
+                    for(var i=0; i<len; i++){
+                        strArr.push(this.stringify(obj[i]));
+                    }
+                    return '[' + strArr.join(',') + ']';
                 }else if(obj.constructor=="Table"){
                     return '{constructor:"Table"}';
                 }
-                else if(obj==null){   
-                    return 'null';  
-                }else{   
-                    var string = [];   
-                    for (var property in obj) string.push(this.stringify(property) + ':' + self.stringify(obj[property]));   
-                    return '{' + string.join(',') + '}';   
-                }   
-            case 'number':   
-                return obj;   
+                else if(obj==null){
+                    return 'null';
+                }else{
+                    var string = [];
+                    for (var property in obj) string.push(this.stringify(property) + ':' + self.stringify(obj[property]));
+                    return '{' + string.join(',') + '}';
+                }
+            case 'number':
+                return obj;
             case'boolean':
                 return new Boolean(obj);
-            case false:   
-                return obj;   
-        }   
+            case false:
+                return obj;
+        }
     };
     this.parse=function(str){
-        return eval('(' + str + ')');   
+        return eval('(' + str + ')');
     };
     return this;
 }
