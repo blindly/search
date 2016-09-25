@@ -115,7 +115,7 @@ function main(){
     if(option.get("showPluginSite")){
         var pluginSite=PluginSite([
             {name:"Google",url:"https://www.google.com/#q=%s",target:"newTab"},
-            {name:"Bing",url:"http://www.bing.com/search?q=%s",target:"preview"},
+            {name:"Bing",url:"http://www.bing.com/search?q=%s",target:"newTab"},
             {name:"DuckDuckGo",url:"https://duckduckgo.com/?q=%s",target:"newTab"},
             {name:"StackOverflow",url:"http://stackoverflow.com/search?q=%s",target:"newTab"},
             {name:"Youtube",url:"https://www.youtube.com/results?search_query=%s",target:"newTab"},
