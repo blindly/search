@@ -34,7 +34,7 @@ function main(){
         showSuggestQuery:{
             name:"Show Suggest Query",
             type:"checkbox",
-            value:true
+            value:false
         },
         showPluginSite:{
             name:"Show Plugin Site",
@@ -44,17 +44,17 @@ function main(){
         showSiteIcon:{
             name:"Show Site Icon",
             type:"checkbox",
-            value:true
+            value:false
         },
         showRelatedLinks:{
             name:"Show Related Links",
             type:"checkbox",
-            value:true
+            value:false
         },
         showPreview:{
             name:"Show Preview",
             type:"checkbox",
-            value:true
+            value:false
         },
         autoLoadNext:{
             name:"Auto Load Next",
